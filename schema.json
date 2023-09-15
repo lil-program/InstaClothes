@@ -1,0 +1,48 @@
+// 【GET】display_clothes
+// 服の一覧画面
+
+{
+    "clothes_name": "str",
+    "clothes_image_path": "str",
+    "shop_url": "str",
+    "description": "str",
+    "closet_id": "uuid4",
+    "closets_id": "uuid4",
+    "closets_name": "str",
+    "user_name": "str",
+    "token": "str",
+}
+
+// 【POST】regist_clothes
+// 服の登録
+
+{
+    "clothes_name": "str",
+    "shop_url": "str",
+    "description": "str",
+    "closet_id": "uuid4",
+    "token": "str",
+}
+
+
+// openAuth使うならアカウント登録いらんくね？
+// 【POST】users/create_user
+// アカウント登録
+
+// 【UPDATE】users/update_user
+// ユーザー情報の更新
+// 名前を変えるなど
+
+{
+    "user_name": "str",
+    "user_id": "uuid4",
+    "token": "str",
+}
+
+//  【GET】users/get_user
+// ユーザープロフィール
+
+{
+    "user_name": "str",
+    "user_id": "uuid4",
+}
