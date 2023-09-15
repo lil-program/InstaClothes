@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = "*"
+uvicorn = "*"
+pydantic = "*"
+firebase-admin = "*"
+sqlalchemy = "*"
+alembic = "*"
+python-dotenv = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"
+
+[scripts]
+migrate = "alembic revision --autogenerate"
+start = "uvicorn main:app --host=127.0.0.1 --port=8003 --reload"
+upgrade="alembic upgrade head"
