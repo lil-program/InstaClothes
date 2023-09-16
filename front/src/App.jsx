@@ -1,49 +1,67 @@
 import { useEffect, useState } from "react";
 
 import ButtonAppBar from './components/Appbar';
-import { Gallery } from './components/Gallary';
+import { Gallery } from './components/Gallery';
 
 
+function Header(props){
+  const { onAddClick } = props;
+  
 
-function Header(){
-    return (
-      <ButtonAppBar />
-    );
+  return (
+    <ButtonAppBar onAddClick={onAddClick}/>
+  );
 }
 
-// function Image() {
-//     return (
+function Clothet(props) {
+  const { urls, onLinkClick, onDeleteClick } = props;
 
-//     );
-// }
-
-// function Gallery() {
-//     return (
-
-//     );
-// }
-
-// function Main() {
-//     return (
-
-//     );
-// }
-
-// function Footer() {
-//     return (
-
-//     );
-// }
+  return (
+    <Gallery
+    urls={urls}
+    onLinkClick={onLinkClick}
+    onDeleteClick={onDeleteClick}
+    />
+  );
+}
 
 function App() {
-  const urls = [
-    "https://www.google.com/"
-    ];
+  const [urls, setUrls] = useState(["https://www.google.com/"]);
+
+  const handleLink = (url) => {
+    console.log("open")
+    // window.open(props.url, '_blank');
+  };
+
+  const handleDelete = (index) => {
+      console.log("delete");
+      const newwUrls = [...urls];
+      newwUrls.splice(index, 1);
+      setUrls(newwUrls);
+
+  };
+
+  const handleAddClick = () => {
+    console.log("add");
+    const newwUrls = [...urls];
+    newwUrls.push("https://qiita.com/Hashimoto-Noriaki/items/f35a2798f0900192c2d0");
+    setUrls(newwUrls);
+  }
+
+  // const [data, setData] = React.useState();
+	// const url = "http://127.0.0.1:8000";
+
+	// const GetData = () => {
+	// 	axios.get(url).then((res) => {
+	// 		setData(res.data);
+	// 	});
+	// };
+
 
   return (
     <div>
-      <Header />
-      <Gallery urls={urls}/>
+      <Header onAddClick={handleAddClick}/>
+      <Clothet urls={urls} setUrls={setUrls} onLinkClick={handleLink} onDeleteClick={handleDelete}/>
     </div>
   );
 }
