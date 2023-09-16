@@ -7,23 +7,7 @@ from sqlalchemy.orm import Session
 router = APIRouter()
 
 
-@router.get("/api/")
-async def hello():
-    return {"msg": "Hello, this is API server"}
-
-
-@router.get("/api/me")
-async def hello_user(user=Depends(deps.get_current_user)):
-    return {"msg": "Hello, user", "uid": user["uid"]}
-
-
-@router.post("/hello")
-def create_message(message: str, cred: dict = Depends(deps.get_current_user)):
-    uid = cred.get("uid")
-    return {"message": f"Hello, {message}! Your uid is [{uid}]"}
-
-
-@router.post("/create_user", response_model=schemas.User)
+@router.post("/create", response_model=schemas.User)
 async def create_user(
     *,
     db: Session = Depends(deps.get_db),
@@ -47,33 +31,25 @@ async def create_user(
     return user
 
 
-@router.get("/users/me", response_model=schemas.User)
+@router.get("/get_my_profile", response_model=schemas.User)
 async def read_user_me(
     *, db: Session = Depends(deps.get_db), cred: dict = Depends(deps.get_current_user)
 ) -> schemas.User:
-    uid = cred.get("uid")
-    if not uid:
-        raise HTTPException(status_code=401, detail="Could not retrieve user ID.")
-
-    user = crud.user.get(db, id=uid)
+    user = crud.user.get(db, id=cred.get("uid"))
     if not user:
         raise HTTPException(status_code=404, detail="User not found.")
     print(cred)
     return user
 
 
-@router.put("/users/me", response_model=schemas.User)
+@router.put("/update", response_model=schemas.User)
 async def update_user_me(
     *,
     db: Session = Depends(deps.get_db),
     user_in: schemas.UserUpdate,
     cred: dict = Depends(deps.get_current_user),
 ) -> schemas.User:
-    uid = cred.get("uid")
-    if not uid:
-        raise HTTPException(status_code=401, detail="Could not retrieve user ID.")
-
-    user = crud.user.get(db, id=uid)
+    user = crud.user.get(db, id=cred.get("uid"))
     if not user:
         raise HTTPException(status_code=404, detail="User not found.")
 

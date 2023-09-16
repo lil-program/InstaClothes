@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-
+from typing import List
 
 class ClosetBase(BaseModel):
     name: str
@@ -11,6 +11,9 @@ class ClosetCreate(ClosetBase):
 
 class ClosetUpdate(ClosetBase):
     pass
+
+class ClosetDelete(BaseModel):
+    closet_ids: List[str]
 
 
 class ClosetInDBBase(ClosetBase):

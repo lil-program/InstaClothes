@@ -11,6 +11,8 @@ firebase-admin = "*"
 sqlalchemy = "*"
 alembic = "*"
 python-dotenv = "*"
+pydantic-settings = "*"
+psycopg2 = "*"
 
 [dev-packages]
 

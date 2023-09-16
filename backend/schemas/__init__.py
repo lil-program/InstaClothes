@@ -1,2 +1,2 @@
-from .user import UserCreate, UserUpdate, User
-from .closet import ClosetCreate, ClosetUpdate, Closet
+from .closet import Closet, ClosetCreate, ClosetDelete, ClosetUpdate
+from .user import User, UserCreate, UserUpdate

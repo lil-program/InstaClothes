@@ -46,6 +46,11 @@ def get_current_user(
             headers={"WWW-Authenticate": 'Bearer error="invalid_token"'},
         )
     res.headers["WWW-Authenticate"] = 'Bearer realm="auth_required"'
+
+    uid = decoded_token.get("uid")
+    if not uid:
+        raise HTTPException(status_code=401, detail="Could not retrieve user ID.")
+
     return decoded_token
 
 

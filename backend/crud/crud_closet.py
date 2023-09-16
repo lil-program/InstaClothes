@@ -54,6 +54,23 @@ class CRUDCloset(CRUDBase[Closet, ClosetCreate, ClosetUpdate]):
             .filter(Closet.id == closet_id, Closet.user_id == user_id)
             .first()
         )
+    
+    def get_multi_by_user(
+        self,
+        db: Session,
+        *,
+        user_id: str,
+    ) -> list[Closet]:
+        """ユーザーIDを使用してクローゼットを取得する
+
+        Args:
+            db (Session): DBセッション
+            user_id (str): ユーザーID
+
+        Returns:
+            list[Closet]: クローゼットのリスト
+        """
+        return db.query(Closet).filter(Closet.user_id == user_id).all()
 
 
 closet = CRUDCloset(Closet)
