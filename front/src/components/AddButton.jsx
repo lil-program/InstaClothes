@@ -1,8 +1,8 @@
 import { Fab } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 
-export default function AddButton (props){
-    const { onAddClick } = props; 
+function AddButton (props){
+    const { onAddClick } = props;
 
     return (
         <Fab size="small" color="secondary" aria-label="add">
@@ -10,3 +10,5 @@ export default function AddButton (props){
         </Fab>
     );
 }
+
+export { AddButton };
