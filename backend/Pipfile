@@ -12,7 +12,9 @@ sqlalchemy = "*"
 alembic = "*"
 python-dotenv = "*"
 pydantic-settings = "*"
-psycopg2 = "*"
+psycopg2-binary = "*"
+selenium = "*"
+webdriver-manager = "*"
 
 [dev-packages]
 

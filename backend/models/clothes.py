@@ -11,6 +11,7 @@ class Clothes(Base):
     id = Column(String, primary_key=True, default=lambda: str(uuid.uuid4()))
     name = Column(String, nullable=True)
     shop_url = Column(String, nullable=False)
+    img_path = Column(String, nullable=False)
     description = Column(String, nullable=True)
     closet_id = Column(String, ForeignKey("closets.id"), nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

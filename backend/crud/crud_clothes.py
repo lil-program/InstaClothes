@@ -5,6 +5,7 @@ from fastapi.encoders import jsonable_encoder
 from models.clothes import Clothes
 from schemas.clothes import ClothesCreate, ClothesUpdate
 from sqlalchemy.orm import Session
+from functions.get_img_path import get_img_path
 
 
 class CRUDClothes(CRUDBase[Clothes, ClothesCreate, ClothesUpdate]):
@@ -16,23 +17,26 @@ class CRUDClothes(CRUDBase[Clothes, ClothesCreate, ClothesUpdate]):
         closet_id: str,
         obj_in: ClothesCreate,
     ) -> Clothes:
-        """ユーザーIDとクローゼットIDを使用してクローゼットを作成する
+        """ユーザIDとクローゼットIDを使用して服を作成する
 
         Args:
             db (Session): DBセッション
-            uid (str): ユーザーID
+            uid (str): ユーザID
             closet_id (str): クローゼットID
-            obj_in (ClosetCreate): クローゼット情報
+            obj_in (ClothesCreate): 服の情報
 
         Returns:
-            Closet: 作成されたクローゼット
+            Clothes: 服
         """
-        closet_data = jsonable_encoder(obj_in)
-        db_closet = Clothes(closet_id=closet_id, **closet_data)
-        db.add(db_closet)
+        db_obj = Clothes(
+            **obj_in.model_dump(),
+            img_path=get_img_path(obj_in.shop_url),
+            closet_id=closet_id,
+        )
+        db.add(db_obj)
         db.commit()
-        db.refresh(db_closet)
-        return db_closet
+        db.refresh(db_obj)
+        return db_obj
 
     def get_by_closet_id(
         self,

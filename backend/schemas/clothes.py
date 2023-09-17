@@ -23,6 +23,7 @@ class ClothesInDBBase(ClothesBase):
     id: str
     name: Optional[str]
     shop_url: str
+    img_path: str
     description: Optional[str]
     closet_id: str
 
