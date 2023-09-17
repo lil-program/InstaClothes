@@ -7,9 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 export function ImageCard(props) {
-    const { url, onLinkClick, onDeleteClick } = props;
-
-    console.log(onLinkClick)
+    const { onLinkClick, onDeleteClick } = props;
 
     return (
         <Card sx={{ maxWidth: 345 }}>

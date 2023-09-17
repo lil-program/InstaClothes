@@ -5,8 +5,7 @@ import { IconButton } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Button } from '@mui/material';
 import { Box } from '@mui/material';
-import { Fab } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
+
 // import { MenuIcon } from '@mui/icons-material';
 
 export default function ButtonAppBar(props) {
@@ -16,9 +15,7 @@ export default function ButtonAppBar(props) {
         <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
             <Toolbar>
-                <Fab size="small" color="secondary" aria-label="add">
-                    <AddIcon onClick={onAddClick}/>
-                </Fab>
+ 
             <IconButton
                 size="large"
                 edge="start"
