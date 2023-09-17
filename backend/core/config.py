@@ -3,6 +3,8 @@ from typing import Any, Optional
 from pydantic import PostgresDsn, ValidationInfo, field_validator
 from pydantic_settings import BaseSettings
 
+
+
 class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
     PROJECT_NAME: str = "InstaClose"
@@ -18,6 +20,16 @@ class Settings(BaseSettings):
     def assemble_db_connection(cls, v: Optional[str], values: ValidationInfo) -> Any:
         if isinstance(v, str):
             return v
+        print(str(
+            PostgresDsn.build(
+                scheme="postgresql",
+                username=values.data.get("POSTGRES_USER"),
+                password=values.data.get("POSTGRES_PASSWORD"),
+                host=values.data.get("POSTGRES_SERVER"),
+                port=int(values.data.get("POSTGRES_PORT")),
+                path=f"{values.data.get('POSTGRES_DB') or ''}",
+            )
+        ))
         return str(
             PostgresDsn.build(
                 scheme="postgresql",

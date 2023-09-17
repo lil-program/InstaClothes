@@ -6,7 +6,6 @@ import { Gallery } from './components/Gallery';
 
 function Header(props){
   const { onAddClick } = props;
-  
 
   return (
     <ButtonAppBar onAddClick={onAddClick}/>
@@ -29,8 +28,7 @@ function App() {
   const [urls, setUrls] = useState(["https://www.google.com/"]);
 
   const handleLink = (url) => {
-    console.log("open")
-    // window.open(props.url, '_blank');
+    window.open(url, '_blank');
   };
 
   const handleDelete = (index) => {

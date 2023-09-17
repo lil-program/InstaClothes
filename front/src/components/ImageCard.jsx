@@ -7,10 +7,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 export function ImageCard(props) {
-    const { url, onLinckClick, onDeleteClick } = props;
-    // const [url, setUrl] = React.useState(url);
+    const { url, onLinkClick, onDeleteClick } = props;
 
-    console.log(onLinckClick)
+    console.log(onLinkClick)
 
     return (
         <Card sx={{ maxWidth: 345 }}>
@@ -23,7 +22,7 @@ export function ImageCard(props) {
             <CardContent>
             </CardContent>
             <CardActions>
-                <Button size="small" onClick={onLinckClick}>Go to Page</Button>
+                <Button size="small" onClick={onLinkClick}>Go to Page</Button>
                 <Button size="small" onClick={onDeleteClick}>Delete</Button>
             </CardActions>
         </Card>
