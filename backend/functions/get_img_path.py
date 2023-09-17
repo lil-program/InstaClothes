@@ -1,13 +1,21 @@
-from get_img.get_default_img import get_default_img
-from get_img.get_zozo_img import get_zozo_img
-from get_img.get_shop_list_img import get_shop_list_img
+from functions.get_img.get_default_img import get_default_img
+from functions.get_img.get_zozo_img import get_zozo_img
+from functions.get_img.get_shop_list_img import get_shop_list_img
 
 URL_TO_FUNCTION_MAPPING = {
     'zozo.jp': get_zozo_img,
     'shop-list.com': get_shop_list_img
 }
 
-def get_img_path(target_url=None):
+def get_img_path(target_url: str = None) -> str:
+    """URLから画像パスを取得する
+
+    Args:
+        target_url (str, optional): ショップURL. Defaults to None.
+
+    Returns:
+        img_url: 画像パス
+    """
     if not target_url:
         return get_default_img()
 
