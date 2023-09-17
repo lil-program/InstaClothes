@@ -10,7 +10,6 @@ class Clothes(Base):
     __tablename__ = "clothes"
     id = Column(String, primary_key=True, default=lambda: str(uuid.uuid4()))
     name = Column(String, nullable=True)
-    image_path = Column(String, nullable=True)
     shop_url = Column(String, nullable=False)
     description = Column(String, nullable=True)
     closet_id = Column(String, ForeignKey("closets.id"), nullable=False)
