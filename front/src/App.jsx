@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import { useEffect, useState } from "react";
 
 import ButtonAppBar from './components/Appbar';
@@ -5,6 +7,8 @@ import { Gallery } from './components/Gallery';
 import AddButton from "./components/AddButton";
 
 import useAddModal from './hooks/useAddModal';
+
+import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
 
 
 
@@ -30,14 +34,14 @@ function Clothet(props) {
 
 function App() {
 
-  // const [data, setData] = React.useState();
-  // const url = "http://127.0.0.1:8000";
+  // const [data, setData] = useState();
+	// const url = "http://127.0.0.1:8003/";
 
-  // const GetData = () => {
-  // 	axios.get(url).then((res) => {
-  // 		setData(res.data);
-  // 	});
-  // };
+	// const GetData = () => {
+	// 	axios.get(url).then((res) => {
+	// 		setData(res.data);
+	// 	});
+	// };
 
   const { AddModal, openAddModal, closeAddModal } = useAddModal();
 
@@ -65,6 +69,11 @@ function App() {
 
 
   return (
+    // <div>
+		// 	<div>ここに処理を書いていきます</div>
+		// 	{data ? <div>{data.Hello}</div> : <button onClick={GetData}>データを取得</button>}
+		// </div>
+    <BrowserRouter>
     <div>
       <Header />
       <Clothet urls={urls} setUrls={setUrls} onLinkClick={handleLink} onDeleteClick={handleDelete}/>
@@ -84,6 +93,7 @@ function App() {
         </div>
       </AddModal>
     </div>
+    </BrowserRouter>
   );
 }
 
