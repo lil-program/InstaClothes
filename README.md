@@ -19,9 +19,9 @@ InstaClothesは、オンラインショッピングで服を探している際�
 ## 事前準備
 - [Docker Desktop](https://www.docker.com/products/docker-desktop)をインストールする
 - [firebase](https://firebase.google.com/)のアカウントを作成する
-- [firebase](https://firebase.google.com/)でプロジェクトを作成する
-- [firebase](https://firebase.google.com/)でAuthenticationを有効にする
-- [firebase](https://firebase.google.com/)で秘密鍵を発行する
+- [firebase](https://firebase.google.com/)でプロジェクトを作成する([プロジェクト作成方法](https://firebase.google.com/docs/projects/learn-more?hl=ja))
+- [firebase](https://firebase.google.com/)でAuthenticationを有効にする([Authenticationの有効化方法](https://firebase.google.com/docs/auth/web/start?hl=ja#before-you-begin))
+- [firebase](https://firebase.google.com/)で秘密鍵を発行する([秘密鍵作成方法](https://firebase.google.com/docs/admin/setup?hl=ja))
 - git cloneする
 - [.envファイル](#envファイルの設定事項)を作成する
 
