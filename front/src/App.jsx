@@ -6,7 +6,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ButtonAppBar from './components/Appbar';
 import { Gallery } from './components/Gallery';
 import SignUp from './SignUp';
-import AddButton from "./components/AddButton";
 import useAddModal from './hooks/useAddModal';
 import { AuthProvider } from './context/AuthContext';
 import NoMatch from './routes/NoMatch';

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AddButton } from '../components/AddButton';
-import { useAddModal } from '../hooks/useAddModal';
+
 
 
 function Home() {
@@ -37,22 +37,8 @@ function Home() {
       <Header />
       <Clothet urls={urls} setUrls={setUrls} onLinkClick={handleLink} onDeleteClick={handleDelete}/>
       <AddButton onAddClick={openAddModal}/>
-      <AddModal>
-        <div
-          style={{
-            backgroundColor: 'white',
-            width: '300px',
-            height: '200px',
-            padding: '1em',
-            borderRadius: '15px',
-          }}
-        >
-          <h2>追加してください</h2>
-          <button onClick={closeAddModal}>Close</button>
-        </div>
-      </AddModal>
     </div>
     );
 }
 
-export default Home;
+export { Home };

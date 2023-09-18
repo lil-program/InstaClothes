@@ -16,6 +16,6 @@ export default function AddModal() {
             <h2>追加してください</h2>
             <button onClick={closeAddModal}>Close</button>
             </div>
-      </Modal>
+        </Modal>
     );
 }
