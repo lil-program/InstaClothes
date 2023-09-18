@@ -38,7 +38,6 @@ async def read_user_me(
     user = crud.user.get(db, id=cred.get("uid"))
     if not user:
         raise HTTPException(status_code=404, detail="User not found.")
-    print(cred)
     return user
 
 
