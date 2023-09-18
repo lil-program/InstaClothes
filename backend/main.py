@@ -12,7 +12,7 @@ if settings.is_production():
     # まだ設定していない
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["https://your-production-domain.com"],
+        allow_origins=[settings.PRODUCT_SEVER_DOMAIN],
         allow_credentials=True,
         allow_methods=["GET", "POST", "PUT", "DELETE"],
         allow_headers=["*"],
@@ -28,8 +28,5 @@ elif settings.is_development():
         allow_methods=["*"],
         allow_headers=["*"],
     )
-elif settings.is_test():
-    # テスト環境用の設定
-    pass
 
 app.include_router(api_router, prefix=settings.API_V1_STR)

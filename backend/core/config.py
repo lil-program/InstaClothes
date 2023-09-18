@@ -8,12 +8,11 @@ from pydantic_settings import BaseSettings
 class AppEnvironment(str, enum.Enum):
     DEVELOP = "development"
     PRODUCTION = "production"
-    TEST = "test"
 
 
 class Settings(BaseSettings):
     ENVIRONMENT: AppEnvironment
-    
+
     API_V1_STR: str = "/api/v1"
     PROJECT_NAME: str = "InstaClose"
 
@@ -23,6 +22,8 @@ class Settings(BaseSettings):
     POSTGRES_DB: str
     POSTGRES_PORT: str
     SQLALCHEMY_DATABASE_URI: Optional[str] = None
+
+    PRODUCT_SEVER_DOMAIN: Optional[str] = None
 
     @field_validator("SQLALCHEMY_DATABASE_URI", mode="after")
     def assemble_db_connection(cls, v: Optional[str], values: ValidationInfo) -> Any:
@@ -44,9 +45,6 @@ class Settings(BaseSettings):
 
     def is_development(self):
         return self.ENVIRONMENT == AppEnvironment.DEVELOP
-
-    def is_test(self):
-        return self.ENVIRONMENT == AppEnvironment.TEST
 
 
 settings = Settings()
