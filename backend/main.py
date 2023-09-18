@@ -7,13 +7,29 @@ app = FastAPI(
     title=settings.PROJECT_NAME, openapi_url=f"{settings.API_V1_STR}/openapi.json"
 )
 
-app.add_middleware(
-    CORSMiddleware,
-    expose_headers=["X-Total-Count"],
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=[""],
-)
+if settings.is_production():
+    # 本番環境用の設定
+    # まだ設定していない
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["https://your-production-domain.com"],
+        allow_credentials=True,
+        allow_methods=["GET", "POST", "PUT", "DELETE"],
+        allow_headers=["*"],
+    )
+elif settings.is_development():
+    # 開発環境用の設定
+    print("開発環境")
+    app.add_middleware(
+        CORSMiddleware,
+        expose_headers=["*"],
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+elif settings.is_test():
+    # テスト環境用の設定
+    pass
 
 app.include_router(api_router, prefix=settings.API_V1_STR)

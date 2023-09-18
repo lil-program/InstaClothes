@@ -1,9 +1,19 @@
+import enum
 from typing import Any, Optional
 
 from pydantic import PostgresDsn, ValidationInfo, field_validator
 from pydantic_settings import BaseSettings
 
+
+class AppEnvironment(str, enum.Enum):
+    DEVELOP = "development"
+    PRODUCTION = "production"
+    TEST = "test"
+
+
 class Settings(BaseSettings):
+    ENVIRONMENT: AppEnvironment
+    
     API_V1_STR: str = "/api/v1"
     PROJECT_NAME: str = "InstaClose"
 
@@ -28,6 +38,15 @@ class Settings(BaseSettings):
                 path=f"{values.data.get('POSTGRES_DB') or ''}",
             )
         )
+
+    def is_production(self):
+        return self.ENVIRONMENT == AppEnvironment.PRODUCTION
+
+    def is_development(self):
+        return self.ENVIRONMENT == AppEnvironment.DEVELOP
+
+    def is_test(self):
+        return self.ENVIRONMENT == AppEnvironment.TEST
 
 
 settings = Settings()
