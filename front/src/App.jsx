@@ -3,10 +3,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Route, Routes } from 'react-router-dom';
 
-import SignUp from './SignUp';
+import SignUp from './pages/SignUp';
 import { AuthProvider } from './context/AuthContext';
 import NoMatch from './routes/NoMatch';
 import { Home } from './pages/Home';
+import { Login } from './pages/Login';
 
 // import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
 
@@ -23,7 +24,7 @@ function App() {
       <div style={{ margin: '2em' }}>
           <Routes>
             <Route path="/signup" element={<SignUp />} />
-            {/* <Route path="/login" element={<Login />} /> */}
+            <Route path="/login" element={<Login />} />
             <Route path="/home" element={<Home />} />
             <Route path="*" element={<NoMatch />} />
           </Routes>
