@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { AddButton } from '../components/AddButton';
-
-
+import { Header } from '../layout/Header';
+import { Clothet } from '../layout/Clothet';
+import { AddModal } from '../components/AddModal';
 
 function Home() {
     const [data, setData] = useState();
 	const url = "http://127.0.0.1:8003/api/v1/test/test";
-
-    const { AddModal, openAddModal, closeAddModal } = useAddModal();
 
 
     const [urls, setUrls] = useState(["https://www.google.com/"]);
@@ -36,7 +35,7 @@ function Home() {
     <div>
       <Header />
       <Clothet urls={urls} setUrls={setUrls} onLinkClick={handleLink} onDeleteClick={handleDelete}/>
-      <AddButton onAddClick={openAddModal}/>
+      <AddModal/>
     </div>
     );
 }

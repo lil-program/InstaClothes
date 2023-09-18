@@ -3,8 +3,6 @@ import { ImageCard } from "./ImageCard";
 export function Gallery(props) {
     const { urls, onLinkClick, onDeleteClick } = props;
 
-    console.log(onLinkClick)
-    
     return (
         <div>
             {urls.map((url, index) => {
@@ -21,3 +19,4 @@ export function Gallery(props) {
         </div>
     );
 }
+

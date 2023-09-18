@@ -8,7 +8,7 @@ import { Box } from '@mui/material';
 
 // import { MenuIcon } from '@mui/icons-material';
 
-export default function ButtonAppBar(props) {
+function ButtonAppBar(props) {
     const { onAddClick } = props;
 
     return (
@@ -32,4 +32,6 @@ export default function ButtonAppBar(props) {
         </AppBar>
         </Box>
     );
-    }
+}
+
+export { ButtonAppBar };
