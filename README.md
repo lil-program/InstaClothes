@@ -31,6 +31,9 @@ InstaClothesは、オンラインショッピングで服を探している際�
 ### backend
 - `backend`ディレクトリに`.env`ファイルを作成して以下の環境変数を設定します。
 ```
+# 実行環境関連パラメータ
+ENVIRONMENT=         # 実行環境（development, production）
+
 # PostgreSQL設定
 POSTGRES_USER=       # PostgreSQLのユーザー名
 POSTGRES_PASSWORD=   # PostgreSQLのパスワード
@@ -38,6 +41,9 @@ POSTGRES_DB=         # 本番用のデータベース名
 POSTGRES_TEST_DB=    # テスト用のデータベース名
 POSTGRES_SERVER=     # PostgreSQLサーバーのアドレス（通常はlocalhostまたはIPアドレス）
 POSTGRES_PORT=       # PostgreSQLのポート（デフォルトは5432）
+
+# サーバー関連パラメータ
+PRODUCT_SEVER_DOMAIN= # 本番用のサーバーのドメイン
 
 # Firebase Web APIキー
 API_KEY=             # API認証用のキー
@@ -117,6 +123,7 @@ Windowsでしか動作確認していません。
 - バックエンド: FastAPI
 - フロントエンド: React
 - データベース: PostgreSQL
+- 認証: Firebase Authentication (JWT)
 - コンテナオーケストレーション: Docker
 - バージョン管理: Git
 
