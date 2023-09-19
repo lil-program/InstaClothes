@@ -1,10 +1,12 @@
 from functions.get_img.get_default_img import get_default_img
 from functions.get_img.get_zozo_img import get_zozo_img
 from functions.get_img.get_shop_list_img import get_shop_list_img
+from functions.get_img.get_shein_img import get_shein_img
 
 URL_TO_FUNCTION_MAPPING = {
     'zozo.jp': get_zozo_img,
-    'shop-list.com': get_shop_list_img
+    'shop-list.com': get_shop_list_img,
+    'shein.com': get_shein_img
 }
 
 def get_img_path(target_url: str = None) -> str:
