@@ -9,6 +9,8 @@
     - [backend](#backend)
       - [seed関数を実行する場合](#seed関数を実行する場合)
   - [実行方法](#実行方法)
+    - [pipenvを使用](#pipenvを使用)
+    - [docker-composeを使用](#docker-composeを使用)
     - [tokenを取得する](#tokenを取得する)
   - [開発環境](#開発環境)
     - [使用技術](#使用技術)
@@ -73,6 +75,7 @@ TESTER2_PASSWORD=                   # テスター2のパスワード
 
 
 ## 実行方法
+### pipenvを使用
 1. pipenvのインストール
     ```bash
     #windowsの場合
@@ -85,7 +88,7 @@ TESTER2_PASSWORD=                   # テスター2のパスワード
 3. `.env`ファイルを作成
 4. `.env`ファイル内で各種設定を行う
     ⇒ [.envファイルの設定事項](#envファイルの設定事項)へ
-5. 秘密鍵を発行したら、`backend`ディレクトリ直下の`core`ディレクトリに`lil_pro_account_key.json`という名前で保存する
+5. 秘密鍵を発行したら、`backend`ディレクトリ直下の`app`ディレクトリの`core`ディレクトリに`lil_pro_account_key.json`という名前で保存する
 6. `backend`ディレクトリに移動
     ```bash
     cd backend
@@ -109,6 +112,20 @@ TESTER2_PASSWORD=                   # テスター2のパスワード
 11. backendサーバーが起動すると、以下のURLでAPIドキュメントにアクセスできます。
     ```
     http://localhost:8000/docs
+    ```
+
+### docker-composeを使用
+1. `.env`ファイルを作成
+2. `.env`ファイル内で各種設定を行う
+    ⇒ [.envファイルの設定事項](#envファイルの設定事項)へ
+3. 秘密鍵を発行したら、`backend`ディレクトリ直下の`app`ディレクトリの`core`ディレクトリに`lil_pro_account_key.json`という名前で保存する
+4. `backend`ディレクトリに移動
+    ```bash
+    cd backend
+    ```
+5. Dockerコンテナをビルドと起動
+    ```bash
+    docker compose up
     ```
 
 ### tokenを取得する
