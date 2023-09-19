@@ -1,6 +1,3 @@
-import axios from "axios";
-
-import { useEffect, useState } from "react";
 import { Route, Routes } from 'react-router-dom';
 
 import SignUp from './pages/SignUp';
@@ -9,16 +6,9 @@ import NoMatch from './routes/NoMatch';
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 
-// import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
+
 
 function App() {
-	// const GetData = () => {
-	// 	axios.get(url).then((res) => {
-	// 		setData(res.data);
-	// 	});
-	// };
-
-
   return (
     <AuthProvider>
       <div style={{ margin: '2em' }}>
@@ -31,10 +21,6 @@ function App() {
       </div>
     </AuthProvider>
 
-    // <div>
-		// 	<div>ここに処理を書いていきます</div>
-		// 	{data ? <div>{data.Hello}</div> : <button onClick={GetData}>データを取得</button>}
-		// </div>
   );
 }
 

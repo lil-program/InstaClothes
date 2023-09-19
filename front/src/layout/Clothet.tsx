@@ -1,5 +1,5 @@
 import { Gallery} from "../components/Gallery";
-
+import { UsersService } from "../api_clients";
 
 function Clothet(props) {
     const { urls, onLinkClick, onDeleteClick } = props;
@@ -14,3 +14,4 @@ function Clothet(props) {
 }
 
 export { Clothet };
+
