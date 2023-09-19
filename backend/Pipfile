@@ -24,7 +24,7 @@ python_version = "3.10"
 
 [scripts]
 migrate = "alembic revision --autogenerate"
-start = "uvicorn main:app --host=127.0.0.1 --port=8003 --reload"
+start = "uvicorn app.main:app --host=127.0.0.1 --port=8003 --reload"
 upgrade="alembic upgrade head"
-seed = "pipenv run python -m db.seed_v1"
+seed = "pipenv run python -m app.db.seed_v1"
 generate_token = "pipenv run python -m generate_token"
