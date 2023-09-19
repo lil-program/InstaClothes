@@ -60,8 +60,6 @@ async def update_clothes(
     if not existing_clothes:
         raise HTTPException(status_code=404, detail="Clothes not found.")
 
-    print(existing_clothes)
-
     # closet_idとuidでclosetを検索し、存在しない場合はエラーを返す
     existing_closet = crud.closet.get_by_id_and_user(
         db, closet_id=existing_clothes.closet_id, user_id=cred.get("uid")
