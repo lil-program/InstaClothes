@@ -12,11 +12,11 @@
     - [tokenを取得する](#tokenを取得する)
   - [開発環境](#開発環境)
     - [使用技術](#使用技術)
-  - [画像取得機能のサイトごとの対応](#画像取得機能のサイトごとの対応)
-    - [Sheinに関して](#backendfunctionsget_imgget_shein_img.py-sheinに関して)
-    - [Zozoに関して](#backendfunctionsget_imgget_zozo_img.py-zozoに関して)
-    - [Shop-listに関して](#backendfunctionsget_imgget_shoplist_img.py-shop-listに関して)
-    - [Defaultの対応に関して](#backendfunctionsget_imgdefault_img.py-defaultの対応に関して)
+    - [画像取得機能のサイトごとの対応](#画像取得機能のサイトごとの対応)
+      - [backend/functions/get\_img/get\_shein\_img.py (Sheinに関して)](#backendfunctionsget_imgget_shein_imgpy-sheinに関して)
+      - [backend/functions/get\_img/get\_zozo\_img.py (Zozoに関して)](#backendfunctionsget_imgget_zozo_imgpy-zozoに関して)
+      - [backend/functions/get\_img/get\_shoplist\_img.py (Shop-listに関して)](#backendfunctionsget_imgget_shoplist_imgpy-shop-listに関して)
+      - [backend/functions/get\_img/default\_img.py (Defaultの対応に関して)](#backendfunctionsget_imgdefault_imgpy-defaultの対応に関して)
 
 ## 概要
 InstaClothesは、オンラインショッピングで服を探している際に起こる一般的な問題を解決するWebアプリケーションです。多くの人々は、気に入った服を見つけたらいったんカートに入れますが、後でどのサイトで何をカートに追加したのかを忘れてしまうことがあります。InstaClothesは、そんな悩みを一括で解決します。

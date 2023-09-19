@@ -8,7 +8,7 @@ import { AddButton } from '../components/AddButton';
 import { Header } from '../layout/Header';
 import { Clothet } from '../layout/Clothet';
 import { AddModal } from '../components/AddModal';
-import { ClothesService, UsersService } from '../api_clients';
+import { ClothesService, UsersService, ClosetsService } from '../api_clients';
 
 
 // ClothesService.readClothesApiV1ClothesGetMyClothesClosetIdGet("string", )
@@ -50,8 +50,9 @@ function Home () {
     useEffect(() => {
         OpenAPI.BASE = 'http://localhost:8003'
         async function fetchData() {
+            console.log("hayasi")
             console.log(OpenAPI.TOKEN)
-            const response = await UsersService.readUserMeApiV1UsersGetMyProfileGet();
+            const response = await ClosetsService.readClosetsApiV1ClosetsGetMyClosetsGet();
             setProfile(response);
         }
         fetchData();
