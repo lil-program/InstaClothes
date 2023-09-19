@@ -15,6 +15,7 @@ pydantic-settings = "*"
 psycopg2-binary = "*"
 selenium = "*"
 webdriver-manager = "*"
+termcolor = "*"
 
 [dev-packages]
 
