@@ -7,11 +7,16 @@
   - [事前準備](#事前準備)
   - [.envファイルの設定事項](#envファイルの設定事項)
     - [backend](#backend)
-        - [seed関数を実行する場合](#seed関数を実行する場合)
+      - [seed関数を実行する場合](#seed関数を実行する場合)
   - [実行方法](#実行方法)
     - [tokenを取得する](#tokenを取得する)
   - [開発環境](#開発環境)
     - [使用技術](#使用技術)
+  - [画像取得機能のサイトごとの対応](#画像取得機能のサイトごとの対応)
+    - [Sheinに関して](#backendfunctionsget_imgget_shein_img.py-sheinに関して)
+    - [Zozoに関して](#backendfunctionsget_imgget_zozo_img.py-zozoに関して)
+    - [Shop-listに関して](#backendfunctionsget_imgget_shoplist_img.py-shop-listに関して)
+    - [Defaultの対応に関して](#backendfunctionsget_imgdefault_img.py-defaultの対応に関して)
 
 ## 概要
 InstaClothesは、オンラインショッピングで服を探している際に起こる一般的な問題を解決するWebアプリケーションです。多くの人々は、気に入った服を見つけたらいったんカートに入れますが、後でどのサイトで何をカートに追加したのかを忘れてしまうことがあります。InstaClothesは、そんな悩みを一括で解決します。
@@ -127,4 +132,16 @@ Windowsでしか動作確認していません。
 - コンテナオーケストレーション: Docker
 - バージョン管理: Git
 
+### 画像取得機能のサイトごとの対応
 
+#### backend/functions/get_img/get_shein_img.py (Sheinに関して)
+この関数は、Sheinのサイトから指定されたURLで画像を取得する機能を持っています。Sheinのサイトに頻繁にアクセスするとアクセス制限がかかる可能性があり、その場合はエラーが発生することがあります。この点に注意して使用してください。
+
+#### backend/functions/get_img/get_zozo_img.py (Zozoに関して)
+この関数は、Zozoのサイトから指定されたURLで画像を取得する機能を持っています。Zozoのサイトの仕様により、seleniumの機能を使用してGoogleドライバを経由してGoogle Chromeを動かす必要があります。
+
+#### backend/functions/get_img/get_shoplist_img.py (Shop-listに関して)
+この関数は、Shop-listのサイトから指定されたURLで画像を取得する機能を持っています。Shop-listに関する特別な注意事項や制限はありません。
+
+#### backend/functions/get_img/default_img.py (Defaultの対応に関して)
+この関数は、指定されたサイト以外からの画像取得を行うデフォルトの機能を持っています。デフォルトではフリーの画像を使用しています。
