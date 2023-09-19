@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'InstaClothes2'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_09F0194721324954A7398CF458D6DFE8 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6DB68A6331284BA5AE0ED4A3B68A6B13 }}
