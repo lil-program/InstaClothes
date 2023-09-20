@@ -1,19 +1,22 @@
 import { useState } from 'react';
 
-const useAddModal = () => {
-  const [show, setShow] = useState(false);
-  
+const useClosetAddModal = () => {
+  const [showClosetModal, setshowClosetModal] = useState(false);
 
-  const openAddModal = () => {
-    setShow(true);
+  const openClosetAddModal = () => {
+    setshowClosetModal(true);
+
   };
 
-  const closeAddModal = () => {
-    setShow(false);
+  const closeClosetAddModal = () => {
+    setshowClosetModal(false);
+    console.log("close closet")
+    console.log(showClosetModal)
   };
+  console.log(showClosetModal)
 
-  const AddModal = ({ children }) => {
-    if (!show) return null;
+  const ClosetAddModal = ({ children }) => {
+    if (!showClosetModal) return null;
     return (
       <div
         style={{
@@ -43,7 +46,7 @@ const useAddModal = () => {
     );
   };
 
-  return { AddModal, openAddModal, closeAddModal };
+  return { ClosetAddModal, openClosetAddModal, closeClosetAddModal };
 };
 
-export default useAddModal;
+export default useClosetAddModal;

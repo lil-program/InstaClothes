@@ -6,9 +6,44 @@ import { Typography } from '@mui/material';
 import { Button } from '@mui/material';
 import { Box } from '@mui/material';
 import ClosetsMenu from './ClosetsMenu';
-
+import { LinkRegistField } from './LinkRegistField';
 
 function ButtonAppBar(props) {
+
+    const [showModal, setShowModal] = React.useState(false);
+    const openModal = () => setShowModal(true)
+    const closeModal = () => setShowModal(false);
+    function Modal({ children }) {
+      return (
+        <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 2
+        }}
+      >
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            backgroundColor: 'gray',
+            opacity: '0.5',
+          }}
+        ></div>
+        <div style={{ position: 'relative' }}>{children}</div>
+      </div>
+      )
+    }
+
     const { handleLogout } = props;
     return(
         <div>
@@ -22,7 +57,7 @@ function ButtonAppBar(props) {
                     aria-label="menu"
                     sx={{ mr: 2 }}
                 >
-                    <ClosetsMenu />
+                    <ClosetsMenu openModal={openModal} />
                 </IconButton>
                 <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
                     InstaClothe
@@ -31,6 +66,23 @@ function ButtonAppBar(props) {
                 </Toolbar>
             </AppBar>
             </Box>
+
+        {showModal && <Modal>
+            <div
+                style={{
+                backgroundColor: 'white',
+                width: '300px',
+                height: '200px',
+                padding: '1em',
+                borderRadius: '15px',
+            }}
+            >
+                <h2>クローゼットの追加</h2>
+                <LinkRegistField />
+                <button onClick={closeModal}>Close</button>
+                <button onClick={closeModal}>Close</button>
+                </div>
+        </Modal>}
         </div>
     );
 }

@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-export function LinkRegistField() {
+export function RegistClosetField() {
   return (
     <Box
       component="form"
@@ -12,7 +12,7 @@ export function LinkRegistField() {
       noValidate
       autoComplete="off"
     >
-      <TextField id="shopUrl" label="shopのurlを追加" variant="standard" />
+      <TextField id="closetName" label="クローゼットの名前を追加" variant="standard" />
     </Box>
   );
 }

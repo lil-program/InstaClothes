@@ -7,7 +7,7 @@ import { OpenAPI } from '../api_clients';
 import { AddButton } from '../components/AddButton';
 import { Header } from '../layout/Header';
 import { Clothet } from '../layout/Clothet';
-import { AddModal } from '../components/AddModal';
+import { ClotheAddModal } from '../components/ClotheAddModal';
 import { ClothesService, UsersService, ClosetsService } from '../api_clients';
 
 
@@ -73,10 +73,15 @@ function Home () {
         fetchData();
     }, []);
 
-    // get_my_closetsをたたいて、name, id, user_idを取得する
-    // 複数想定されるので、デフォルトで一番最初のcloset_idを使う
+    useEffect(() => {
+        OpenAPI.BASE = 'http://localhost:8003'
+        async function fetchData() {
+            const response = await ClosetsService.readClosetApiV1ClosetsGetClosetIdGet();
+            console.log(response)
+        }
+        fetchData();
+    });
 
-    console.log(user)
     if (!user ) {
         return <Navigate replace to="/login" />
     };
@@ -85,7 +90,7 @@ function Home () {
             <AuthProvider>
                 <Header handleLogout={handleLogout}/>
                 <Clothet urls={urls} setUrls={setUrls} onLinkClick={handleLink} onDeleteClick={handleDelete}/>
-                <AddModal/>
+                <ClotheAddModal/>
             </AuthProvider>
         </div>
     );

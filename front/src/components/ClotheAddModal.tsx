@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import useAddModal from "../hooks/useAddModal";
 import { AddButton } from "./AddButton";
+import { LinkRegistField } from "./LinkRegistField";
 
-function AddModal() {
+function ClotheAddModal() {
 
     const { AddModal, openAddModal, closeAddModal } = useAddModal();
 
@@ -21,10 +23,11 @@ function AddModal() {
                 }}
                 >
                 <h2>服の追加</h2>
+                <LinkRegistField />
                 <button onClick={closeAddModal}>Close</button>
                 </div>
             </AddModal>
         </div>
     );
 }
-export { AddModal };
+export { ClotheAddModal };
