@@ -40,7 +40,7 @@ requestBody: ClothesCreate,
 
     /**
      * Read Clothes
-     * @param closetId 
+     * @param closetId
      * @returns Clothes Successful Response
      * @throws ApiError
      */

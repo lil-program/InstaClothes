@@ -11,54 +11,50 @@ import { LinkRegistField } from './LinkRegistField';
 function ButtonAppBar(props) {
 
     const [showModal, setShowModal] = React.useState(false);
-    const openModal = () => setShowModal(true)
+    const openModal = () => setShowModal(true);
     const closeModal = () => setShowModal(false);
     function Modal({ children }) {
       return (
-        <div
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          zIndex: 2
-        }}
-      >
-        <div
-          style={{
-            position: 'fixed',
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            backgroundColor: 'gray',
-            opacity: '0.5',
-          }}
-        ></div>
-        <div style={{ position: 'relative' }}>{children}</div>
-      </div>
+        <div>
+            <div
+                style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                zIndex: 0,
+            }}
+            ></div>
+            <div
+            style={{
+                position: 'fixed',
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+                backgroundColor: 'gray',
+                opacity: '0.5',
+            }}
+            ></div>
+            <div style={{ position: 'relative' }}>{children}</div>
+        </div>
+
       )
     }
 
     const { handleLogout } = props;
+
+    console.log(showModal)
     return(
         <div>
             <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar>
-                <IconButton
-                    size="large"
-                    edge="start"
-                    color="inherit"
-                    aria-label="menu"
-                    sx={{ mr: 2 }}
-                >
-                    <ClosetsMenu openModal={openModal} />
-                </IconButton>
+                <ClosetsMenu openModal={openModal} />
                 <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
                     InstaClothe
                 </Typography>

@@ -1,100 +1,80 @@
-import React, { useEffect, useState } from 'react';
-import { auth } from '../FirebaseConfig';
-import { useNavigate, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuthContext } from '../context/AuthContext';
-import { OpenAPI } from '../api_clients';
+import React, { useEffect, useState } from "react";
+import { auth } from "../FirebaseConfig";
+import { useNavigate, Navigate } from "react-router-dom";
+import { AuthProvider, useAuthContext } from "../context/AuthContext";
+import { OpenAPI } from "../api_clients";
 
-import { AddButton } from '../components/AddButton';
-import { Header } from '../layout/Header';
-import { Clothet } from '../layout/Clothet';
-import { ClotheAddModal } from '../components/ClotheAddModal';
-import { ClothesService, UsersService, ClosetsService } from '../api_clients';
+import { Header } from "../layout/Header";
+import { Clothet } from "../layout/Clothet";
+import { ClotheAddModal } from "../components/ClotheAddModal";
+import { Gallery } from "../components/Gallery";
+
+import { ClothesService, UsersService, ClosetsService } from "../api_clients";
 
 
-// ClothesService.readClothesApiV1ClothesGetMyClothesClosetIdGet("string", )
+function Home() {
 
-function Home () {
-    const navigate = useNavigate();
-    const { user } = useAuthContext();
-    const handleLogout = () => {
-        auth.signOut();
-        navigate("/login", { state: { id: 1 } });
-        console.log("logout");
+
+  // profile
+//   const [profiles, setProfile] = useState({} as any);
+//   useEffect(() => {
+//     OpenAPI.BASE = "http://localhost:8003";
+//     async function fetchData() {
+//       const response = await UsersService.readUserMeApiV1UsersGetMyProfileGet();
+//     }
+//     fetchData().then((response) => {
+//       setProfile(response);
+//     });
+//   }, []);
+
+
+
+  // closets
+  const [closets, setClosets] = useState([] as any);
+  useEffect(() => {
+    OpenAPI.BASE = "http://localhost:8003";
+    async function fetchData() {
+      const response =
+        await ClosetsService.readClosetsApiV1ClosetsGetMyClosetsGet();
+      setClosets(response);
     }
-
-    const handleLogin = () => {
-        navigate("/login", { state: { id: 1 } });
-    }
-
-    const [closets, setClosets] = useState({} as any);
-    useEffect(() => {
-        OpenAPI.BASE = 'http://localhost:8003'
-        async function fetchData() {
-            const closets = await ClosetsService.readClosetApiV1ClosetsGetClosetIdGet();
-            setProfile(closets);
-        }
-        fetchData();
-    }, []);
-    console.log(closets.closet_id)
+    fetchData();
+  }, []);
 
 
-    const [urls, setUrls] = useState(["https://www.google.com/"]);
 
-    const handleLink = (url) => {
-        window.open(url, '_blank');
-    };
+  const navigate = useNavigate();
+  const { user } = useAuthContext();
+  const handleLogout = () => {
+    auth.signOut();
+    navigate("/login", { state: { id: 1 } });
+    console.log("logout");
+  };
 
-    const handleDelete = (index) => {
-        // clothes_idsをfactory関数に渡す
 
-        console.log("delete");
-        const newwUrls = [...urls];
-        newwUrls.splice(index, 1);
-        setUrls(newwUrls);
 
-    };
+  const handleLogin = () => {
+    navigate("/login", { state: { id: 1 } });
+  };
 
-    const handleAddClick = () => {
 
-        // closet_idをfactory関数に渡す
-        console.log("add");
-        const newwUrls = [...urls];
-        newwUrls.push("https://qiita.com/Hashimoto-Noriaki/items/f35a2798f0900192c2d0");
-        setUrls(newwUrls);
-    }
-
-    const [profile, setProfile] = useState({} as any);
-    useEffect(() => {
-        OpenAPI.BASE = 'http://localhost:8003'
-        async function fetchData() {
-            const response = await UsersService.readUserMeApiV1UsersGetMyProfileGet();
-            setProfile(response);
-        }
-        fetchData();
-    }, []);
-
-    useEffect(() => {
-        OpenAPI.BASE = 'http://localhost:8003'
-        async function fetchData() {
-            const response = await ClosetsService.readClosetApiV1ClosetsGetClosetIdGet();
-            console.log(response)
-        }
-        fetchData();
-    });
-
-    if (!user ) {
-        return <Navigate replace to="/login" />
-    };
-    return(
-        <div>
-            <AuthProvider>
-                <Header handleLogout={handleLogout}/>
-                <Clothet urls={urls} setUrls={setUrls} onLinkClick={handleLink} onDeleteClick={handleDelete}/>
-                <ClotheAddModal/>
-            </AuthProvider>
-        </div>
-    );
+  console.log(closets);
+  if (!user) {
+    return <Navigate replace to="/login" />;
+  }
+  if (closets.length === 0) {
+    return <p>fafa</p>;
+  }
+  return (
+    <div>
+      <AuthProvider>
+        <Header handleLogout={handleLogout} />
+        {/* <Clothet urls={urls} setUrls={setUrls} onLinkClick={handleLink} onDeleteClick={handleDelete}/> */}
+        <Gallery closet_id={closets[0].id} />
+        <ClotheAddModal closet_id={closets[0].id}/>
+      </AuthProvider>
+    </div>
+  );
 }
 
 export { Home };
-

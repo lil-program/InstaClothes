@@ -52,7 +52,7 @@ const StyledMenu = styled((props) => (
   },
 }));
 
-export default function CustomizedMenus({ openModal }) {
+export default function ClosetsMenus({ openModal }) {
 
   // const { ClosetAddModal, openClosetAddModal, closeClosetAddModal } = useClosetAddModal();
 
@@ -108,7 +108,7 @@ export default function CustomizedMenus({ openModal }) {
 
     </div>
    
-            </>
+    </>
   );
 }
 

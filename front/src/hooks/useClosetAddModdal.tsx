@@ -13,7 +13,6 @@ const useClosetAddModal = () => {
     console.log("close closet")
     console.log(showClosetModal)
   };
-  console.log(showClosetModal)
 
   const ClosetAddModal = ({ children }) => {
     if (!showClosetModal) return null;
