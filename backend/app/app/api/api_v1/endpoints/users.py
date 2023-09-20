@@ -17,9 +17,6 @@ async def create_user(
     uid = cred.get("uid")
     display_name = cred.get("displayName", None)  # FirebaseからdisplayNameを取得
 
-    if not uid:
-        raise HTTPException(status_code=401, detail="Could not retrieve user ID.")
-
     existing_user = crud.user.get(db, id=uid)
     if existing_user:
         raise HTTPException(status_code=400, detail="User already exists.")
