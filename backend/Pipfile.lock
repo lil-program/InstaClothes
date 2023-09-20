@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "5fdce4d1f8807e8ed1f09fc2affa671a8604d6a4d6fb5a02d847fadc50acd0ed"
+            "sha256": "d489b5464dc5a79cb49e1230187c040a93a996a7be9006a695077b348d6b20ec"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -1174,11 +1174,11 @@
                 "socks"
             ],
             "hashes": [
-                "sha256:8d22f86aae8ef5e410d4f539fde9ce6b2113a001bb4d189e0aed70642d602b11",
-                "sha256:de7df1803967d2c2a98e4b11bb7d6bd9210474c46e8a0401514e3a42a75ebde4"
+                "sha256:13abf37382ea2ce6fb744d4dad67838eec857c9f4f57009891805e0b5e123594",
+                "sha256:ef16afa8ba34a1f989db38e1dbbe0c302e4289a47856990d0682e374563ce35e"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==2.0.4"
+            "version": "==2.0.5"
         },
         "uvicorn": {
             "hashes": [
@@ -1322,6 +1322,14 @@
             ],
             "index": "pypi",
             "version": "==4.1.0"
+        },
+        "pytest-mock": {
+            "hashes": [
+                "sha256:21c279fff83d70763b05f8874cc9cfb3fcacd6d354247a976f9529d19f9acf39",
+                "sha256:7f6b125602ac6d743e523ae0bfa71e1a697a2f5534064528c6ff84c2f7c2fc7f"
+            ],
+            "index": "pypi",
+            "version": "==3.11.1"
         },
         "tomli": {
             "hashes": [

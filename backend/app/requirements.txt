@@ -99,3 +99,4 @@ uvicorn==0.23.2
 wcwidth==0.2.6
 webdriver-manager==4.0.0
 wsproto==1.2.0
+pytest-mock==3.11.1
