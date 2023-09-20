@@ -1,11 +1,11 @@
 from typing import Optional
 
+from sqlalchemy.orm import Session
+
 from app.crud.base import CRUDBase
-from fastapi.encoders import jsonable_encoder
+from app.functions import get_img_path
 from app.models.clothes import Clothes
 from app.schemas.clothes import ClothesCreate, ClothesUpdate
-from sqlalchemy.orm import Session
-from app.functions.get_img_path import get_img_path
 
 
 class CRUDClothes(CRUDBase[Clothes, ClothesCreate, ClothesUpdate]):
@@ -30,7 +30,7 @@ class CRUDClothes(CRUDBase[Clothes, ClothesCreate, ClothesUpdate]):
         """
         db_obj = Clothes(
             **obj_in.model_dump(),
-            img_path=get_img_path(obj_in.shop_url),
+            img_path=get_img_path.get_img_path(obj_in.shop_url),
             closet_id=closet_id,
         )
         db.add(db_obj)
