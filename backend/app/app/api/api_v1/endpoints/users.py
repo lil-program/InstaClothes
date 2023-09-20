@@ -1,8 +1,8 @@
-from app import crud
-from app import schemas
-from app.api import deps
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+
+from app import crud, schemas
+from app.api import deps
 
 router = APIRouter()
 
@@ -26,6 +26,11 @@ async def create_user(
 
     user = crud.user.create_with_uid_and_display_name(
         db=db, uid=uid, obj_in=user_in, display_name=display_name
+    )
+
+    # ユーザー作成時に、closetを作成する
+    crud.closet.create_with_uid(
+        db=db, uid=uid, obj_in=schemas.ClosetCreate(name="sample_closet")
     )
 
     return user
