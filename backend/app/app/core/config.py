@@ -29,12 +29,16 @@ class Settings(BaseSettings):
     def assemble_db_connection(cls, v: Optional[str], values: ValidationInfo) -> Any:
         if isinstance(v, str):
             return v
-        
-        postgres_port = values.data.get("POSTGRES_PORT")
-        if postgres_port is None:
-            raise ValueError("POSTGRES_PORT must be set")
-        
-        print(values.data.get("POSTGRES_SERVER"))
+        print(str(
+            PostgresDsn.build(
+                scheme="postgresql",
+                username=values.data.get("POSTGRES_USER"),
+                password=values.data.get("POSTGRES_PASSWORD"),
+                host=values.data.get("POSTGRES_SERVER"),
+                port=int(values.data.get("POSTGRES_PORT")),
+                path=f"{values.data.get('POSTGRES_DB') or ''}",
+            )
+        ))
         return str(
             PostgresDsn.build(
                 scheme="postgresql",

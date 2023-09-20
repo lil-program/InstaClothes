@@ -7,9 +7,12 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 export function ImageCard(props) {
-    const handleClick = () => {
-        window.open(props.url, '_blank');
+    const { shop_url, img_path, clothe_id, handleDelete, handleAddClick } = props;
+
+    const handleLink = (url) => {
+        window.open(url, '_blank');
     };
+
 
     return (
         <Card sx={{ maxWidth: 345 }}>
@@ -17,14 +20,13 @@ export function ImageCard(props) {
                 component="img"
                 alt="clothe"
                 height="140"
-                image={props.url}
+                image={img_path}
             />
             <CardContent>
             </CardContent>
             <CardActions>
-                <Button size="small">Share</Button>
-                <Button size="small" onClick={handleClick}>Go to Page</Button>
-                <Button size="small">Learn More</Button>
+                <Button size="small" onClick={handleLink}>Go to Page</Button>
+                <Button size="small" onClick={() => handleDelete(clothe_id)}>Delete</Button>
             </CardActions>
         </Card>
     );

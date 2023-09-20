@@ -10,7 +10,9 @@ def extract_image_url_from_html(html_content):
             return url_match.group(1) if url_match else None
     return None
 
-def get_zozo_img(target_url):
+# def get_zozo_img(target_url):
+target_url = "https://zozo.jp/shop/lacoste/goods-sale/51650460/?did=110829647&rid=1203"
+def get_zozo_img(target_url ):
     options = ChromeOptions()
     
     with Chrome(options=options) as driver:
