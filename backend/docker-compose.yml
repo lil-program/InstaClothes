@@ -1,13 +1,33 @@
 version: '3.9'
 services:
-  db:
+  postgres:
     image: postgres:15
     volumes:
-#      - ./postgresql/data:/var/lib/postgresql/data
-      - ./db/postgres:/docker-entrypoint-initdb.d
+      # - ./backend/postgresql/data:/var/lib/postgresql/data
+      - ./backend/db/postgres:/docker-entrypoint-initdb.d
     ports:
       - "5432:5432"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --locale=C
+
+  backend:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - "8003:8003"
+    tty: true
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    environment:
+      - WAIT_HOSTS=postgres:5432
+    command:
+      [
+        "sh",
+        "-c",
+        "/wait && alembic upgrade head && python -m app.db.seed_v1 && uvicorn app.main:app --host 0.0.0.0 --port 8003"
+      ]
