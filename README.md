@@ -111,7 +111,7 @@ TESTER2_PASSWORD=                   # テスター2のパスワード
     ```
 11. backendサーバーが起動すると、以下のURLでAPIドキュメントにアクセスできます。
     ```
-    http://localhost:8000/docs
+    http://localhost:8003/docs
     ```
 
 ### docker-composeを使用
