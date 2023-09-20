@@ -1,11 +1,13 @@
-import { ButtonAppBar } from '../components/AppBar';
+import { ButtonAppBar } from "../components/ButtonAppBar.jsx";
 
 
 function Header(props){
-    const { onAddClick } = props;
-  
+  // clothetのid, nameをhomeコンポーネントから受け取る
+    const { handleLogout } = props;
+
     return (
-      <ButtonAppBar onAddClick={onAddClick}/>
+        <ButtonAppBar handleLogout={handleLogout}/>
+  
     );
   }
 

@@ -36,6 +36,8 @@ async def read_user_me(
     *, db: Session = Depends(deps.get_db), cred: dict = Depends(deps.get_current_user)
 ) -> schemas.User:
     user = crud.user.get(db, id=cred.get("uid"))
+    print("--------------------")
+    print(cred.get("uid"))
     if not user:
         raise HTTPException(status_code=404, detail="User not found.")
     return user

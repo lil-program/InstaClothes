@@ -20,11 +20,11 @@ function AddModal() {
                     borderRadius: '15px',
                 }}
                 >
-                <h2>追加してください</h2>
+                <h2>服の追加</h2>
                 <button onClick={closeAddModal}>Close</button>
                 </div>
             </AddModal>
         </div>
     );
-}    
+}
 export { AddModal };

@@ -19,10 +19,23 @@ function Home () {
     const handleLogout = () => {
         auth.signOut();
         navigate("/login", { state: { id: 1 } });
+        console.log("logout");
     }
 
-    const [data, setData] = useState();
-	const url = "http://127.0.0.1:8003/api/v1/test/test";
+    const handleLogin = () => {
+        navigate("/login", { state: { id: 1 } });
+    }
+
+    const [closets, setClosets] = useState({} as any);
+    useEffect(() => {
+        OpenAPI.BASE = 'http://localhost:8003'
+        async function fetchData() {
+            const closets = await ClosetsService.readClosetApiV1ClosetsGetClosetIdGet();
+            setProfile(closets);
+        }
+        fetchData();
+    }, []);
+    console.log(closets.closet_id)
 
 
     const [urls, setUrls] = useState(["https://www.google.com/"]);
@@ -32,6 +45,8 @@ function Home () {
     };
 
     const handleDelete = (index) => {
+        // clothes_idsをfactory関数に渡す
+
         console.log("delete");
         const newwUrls = [...urls];
         newwUrls.splice(index, 1);
@@ -40,6 +55,8 @@ function Home () {
     };
 
     const handleAddClick = () => {
+
+        // closet_idをfactory関数に渡す
         console.log("add");
         const newwUrls = [...urls];
         newwUrls.push("https://qiita.com/Hashimoto-Noriaki/items/f35a2798f0900192c2d0");
@@ -50,31 +67,27 @@ function Home () {
     useEffect(() => {
         OpenAPI.BASE = 'http://localhost:8003'
         async function fetchData() {
-            console.log("hayasi")
-            console.log(OpenAPI.TOKEN)
-            const response = await ClosetsService.readClosetsApiV1ClosetsGetMyClosetsGet();
+            const response = await UsersService.readUserMeApiV1UsersGetMyProfileGet();
             setProfile(response);
         }
         fetchData();
     }, []);
 
-    console.log(profile)
+    // get_my_closetsをたたいて、name, id, user_idを取得する
+    // 複数想定されるので、デフォルトで一番最初のcloset_idを使う
+
     console.log(user)
-    if (!user) {
+    if (!user ) {
         return <Navigate replace to="/login" />
     };
     return(
         <div>
             <AuthProvider>
-                <div>
-                </div>
-                <Header />
+                <Header handleLogout={handleLogout}/>
                 <Clothet urls={urls} setUrls={setUrls} onLinkClick={handleLink} onDeleteClick={handleDelete}/>
                 <AddModal/>
-                <button onClick={handleLogout}>ログアウト</button>
             </AuthProvider>
         </div>
-        
     );
 }
 

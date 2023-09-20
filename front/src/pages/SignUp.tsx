@@ -4,6 +4,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../FirebaseConfig";
 
 const SignUp = () => {
+  // アカウント登録は、nameをfactoryに渡す
 
   const emailRef = useRef(null);
   const emailPassword = useRef(null);
