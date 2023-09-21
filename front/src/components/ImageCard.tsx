@@ -5,6 +5,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 export function ImageCard(props) {
     const { shop_url, img_path, clothe_id, handleDelete, handleAddClick } = props;
@@ -15,18 +17,21 @@ export function ImageCard(props) {
 
 
     return (
-        <Card sx={{ maxWidth: 200 }}>
+        <Card sx={{ minWidth: 120 }}>
             <CardMedia
                 component="img"
                 alt="clothe"
                 height="140"
                 image={img_path}
+                sx={{ objectFit: 'contain' }}
             />
             <CardContent>
             </CardContent>
-            <CardActions>
-                <Button size="small" onClick={handleLink}>Go to Page</Button>
-                <Button size="small" onClick={() => handleDelete(clothe_id)}>Delete</Button>
+            <CardActions
+            sx={{ justifyContent: 'space-between' }}
+            >
+                <OpenInNewIcon  onClick={handleLink}>Page</OpenInNewIcon>
+                <DeleteSweepIcon  onClick={() => handleDelete(clothe_id)}>Delete</DeleteSweepIcon>
             </CardActions>
         </Card>
     );

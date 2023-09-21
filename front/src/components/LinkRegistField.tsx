@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import CheckIcon from '@mui/icons-material/Check';
 
 export function LinkRegistField(props) {
   const { closet_id, inputShopUrl, setInputShopUrl, handleAddClothe } = props;

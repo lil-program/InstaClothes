@@ -4,6 +4,7 @@ import { AddButton } from "./AddButton";
 import { LinkRegistField } from "./LinkRegistField";
 import { ClothesService, OpenAPI } from "../api_clients";
 import { useState } from "react";
+import CloseIcon from '@mui/icons-material/Close';
 
 
 function ClotheAddModal(props) {
@@ -46,7 +47,7 @@ function ClotheAddModal(props) {
                 >
                 <h2>服の追加</h2>
                 <LinkRegistField closet_id={closet_id} inputShopUrl={inputShopUrl} setInputShopUrl={setInputShopUrl} handleAddClothe={handleAddClothe}/>
-                <button onClick={closeAddModal}>Close</button>
+                <CloseIcon onClick={closeAddModal}>Close</CloseIcon>
                 </div>
             </AddModal>
         </div>
