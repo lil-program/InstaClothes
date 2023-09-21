@@ -7,6 +7,7 @@ import { Button } from "@mui/material";
 import { Box } from "@mui/material";
 import ClosetsMenu from "./ClosetsMenu";
 import { ClosetRegistField } from "./ClosetRegistField";
+import CloseIcon from '@mui/icons-material/Close';
 
 function ButtonAppBar(props) {
 
@@ -79,7 +80,7 @@ function ButtonAppBar(props) {
           >
             <h2>クローゼットの追加</h2>
             <ClosetRegistField />
-            <button onClick={closeModal}>Close</button>
+            <CloseIcon onClick={closeModal}>Close</CloseIcon>
           </div>
         </Modal>
       )}

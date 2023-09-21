@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import useAddModal from "../hooks/useAddModal";
 import { AddButton } from "./AddButton";
 
+
 function ClosetAddModal() {
 
     const { AddModal, openAddModal, closeAddModal } = useAddModal();
