@@ -9,7 +9,7 @@ export function Gallery(props) {
   const [clothes, setClothes] = useState([] as any);
   // closetsをfetchしてcloset_idを取得する
   useEffect(() => {
-    OpenAPI.BASE = "http://localhost:8003";
+    OpenAPI.BASE = import.meta.env.VITE_OPEN_API_BASE;
     async function fetchData() {
       const response =
         await ClothesService.readClothesApiV1ClothesGetMyClothesClosetIdGet(
@@ -18,20 +18,23 @@ export function Gallery(props) {
       setClothes([...response]);
     }
     fetchData();
-  }, []);
+  }, [closet_id]);
 
   const handleDelete = async (clothe_id) => {
     const requestBody = { clothes_ids: [clothe_id] };
     await ClothesService.deleteClothesApiV1ClothesDeleteDelete(requestBody);
 
-    console.log("delete");
     const newClothes = clothes.filter((clothe) => clothe.id !== clothe_id);
     setClothes(newClothes);
   };
 
   const handleAddClick = async (shop_url) => {
-    const requestBody = { name: "string", "shop_url": shop_url};
-    await ClothesService.createClothesApiV1ClothesCreateClosetIdPost(requestBody);
+    const params = closet_id;
+    const requestBody = { name: "string", shop_url: shop_url };
+    await ClothesService.createClothesApiV1ClothesCreateClosetIdPost(
+      params,
+      requestBody
+    );
   };
 
   return (

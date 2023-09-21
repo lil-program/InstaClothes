@@ -10,12 +10,12 @@ export function ImageCard(props) {
     const { shop_url, img_path, clothe_id, handleDelete, handleAddClick } = props;
 
     const handleLink = (url) => {
-        window.open(url, '_blank');
+        window.open(shop_url, '_blank');
     };
 
 
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 200 }}>
             <CardMedia
                 component="img"
                 alt="clothe"

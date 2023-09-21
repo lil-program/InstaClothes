@@ -1,11 +1,19 @@
 import { Link } from "react-router-dom";
 import useAddModal from "../hooks/useAddModal";
 import { AddButton } from "./AddButton";
-import { RegistClosetField } from "./RegsitClosetField";
 
 function ClosetAddModal() {
 
     const { AddModal, openAddModal, closeAddModal } = useAddModal();
+
+    const handleAddClothe = async (closet_id, shop_url) => {
+
+        console.log(shop_url)
+        const requestBody = {"name": "string", "shop_url": shop_url};
+        await ClothesService.createClothesApiV1ClothesCreateClosetIdPost(closet_id, requestBody);
+
+        setInputShopUrl(shop_url);
+    };
 
     return (
         <div>
@@ -20,8 +28,7 @@ function ClosetAddModal() {
                 }}
                 >
                 <h2>服の追加</h2>
-                <RegistClosetField />
-                <button onClick={closeAddModal}>Close</button>
+                <ClosetAddModal />
                 </div>
             </AddModal>
         </div>

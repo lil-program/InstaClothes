@@ -17,9 +17,12 @@ export function AuthProvider({ children }) {
     user,
   };
 
+  
+
   useEffect(() => {
     const unsubscribed = auth.onAuthStateChanged(async (user) => {
       setUser(user);
+      if (user === null){return}
       const token = await user.getIdToken();
       OpenAPI.TOKEN = token
     });

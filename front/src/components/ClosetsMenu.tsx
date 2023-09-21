@@ -52,7 +52,9 @@ const StyledMenu = styled((props) => (
   },
 }));
 
-export default function ClosetsMenus({ openModal }) {
+export default function ClosetsMenus(props) {
+
+  const { openModal, closets, location ,setLocation } = props;
 
   // const { ClosetAddModal, openClosetAddModal, closeClosetAddModal } = useClosetAddModal();
 
@@ -71,6 +73,15 @@ export default function ClosetsMenus({ openModal }) {
     handleClose()
   }
 
+  const SelectedLocation = () => {
+    const selectedCloset = closets.filter((closet) => closet.id === location);
+    const selectedClosetName = selectedCloset[0].name
+    return(
+      <div>
+        {selectedClosetName}
+      </div>
+    );
+  }
 
   return (
     <>
@@ -85,7 +96,9 @@ export default function ClosetsMenus({ openModal }) {
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
       >
-        Options
+      <div>
+        {SelectedLocation()}
+      </div>
       </Button>
       <StyledMenu
         id="demo-customized-menu"
@@ -96,13 +109,22 @@ export default function ClosetsMenus({ openModal }) {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem disableRipple>
-          <EditIcon />
-          Edit
-        </MenuItem>
+        <div>
+          {closets.map((closet) => {
+            return (
+              <MenuItem
+                key={closet.id}
+                onClick={() => setLocation(closet.id)}
+                disableRipple
+              >
+              {closet.name}
+              </MenuItem>
+            );
+          })}
+        </div>
         <MenuItem onClick={onClickOpenModal} disableRipple>
           <FileCopyIcon />
-          Duplicate
+          クローゼットの追加
         </MenuItem>
       </StyledMenu>
 

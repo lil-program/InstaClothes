@@ -10,8 +10,6 @@ const useClosetAddModal = () => {
 
   const closeClosetAddModal = () => {
     setshowClosetModal(false);
-    console.log("close closet")
-    console.log(showClosetModal)
   };
 
   const ClosetAddModal = ({ children }) => {
