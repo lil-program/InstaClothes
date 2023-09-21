@@ -11,9 +11,10 @@ export function Gallery(props) {
   useEffect(() => {
     OpenAPI.BASE = "http://localhost:8003";
     async function fetchData() {
+      console.log(closet_id);
       const response =
         await ClothesService.readClothesApiV1ClothesGetMyClothesClosetIdGet(
-          closet_id
+          closet_id,
         );
       setClothes([...response]);
     }
@@ -30,8 +31,10 @@ export function Gallery(props) {
   };
 
   const handleAddClick = async (shop_url) => {
+    const params = closet_id;
+    console.log(params)
     const requestBody = { name: "string", "shop_url": shop_url};
-    await ClothesService.createClothesApiV1ClothesCreateClosetIdPost(requestBody);
+    await ClothesService.createClothesApiV1ClothesCreateClosetIdPost(params, requestBody);
   };
 
   return (

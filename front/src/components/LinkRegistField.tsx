@@ -18,7 +18,7 @@ export function LinkRegistField(props) {
       noValidate
       autoComplete="off"
     >
-      <TextField id="shopUrl" label="shopのurlを追加" variant="standard" value={inputShopUrl} onChange={handleInpuutShopUrl} />
+      <TextField type="text" id="shopUrl" label="shopのurlを追加" variant="standard" value={inputShopUrl} onChange={handleInpuutShopUrl} />
       <button onClick={() => handleAddClothe(closet_id, inputShopUrl)}>add</button>
     </Box>
   );

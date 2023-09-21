@@ -9,11 +9,10 @@ import { Clothet } from "../layout/Clothet";
 import { ClotheAddModal } from "../components/ClotheAddModal";
 import { Gallery } from "../components/Gallery";
 
-import { ClothesService, UsersService, ClosetsService } from "../api_clients";
+import { ClosetsService } from "../api_clients";
 
 
 function Home() {
-
 
   // profile
 //   const [profiles, setProfile] = useState({} as any);
@@ -28,8 +27,8 @@ function Home() {
 //   }, []);
 
 
-
   // closets
+  const [location, setLocation] = useState({} as any);
   const [closets, setClosets] = useState([] as any);
   useEffect(() => {
     OpenAPI.BASE = "http://localhost:8003";
@@ -37,11 +36,11 @@ function Home() {
       const response =
         await ClosetsService.readClosetsApiV1ClosetsGetMyClosetsGet();
       setClosets(response);
+      setLocation(response[0].id);
+
     }
     fetchData();
-  }, []);
-
-
+  },[]);
 
   const navigate = useNavigate();
   const { user } = useAuthContext();
@@ -51,14 +50,13 @@ function Home() {
     console.log("logout");
   };
 
-
-
   const handleLogin = () => {
     navigate("/login", { state: { id: 1 } });
   };
+  console.log(location);
 
 
-  console.log(closets);
+  // console.log(OpenAPI.TOKEN);
   if (!user) {
     return <Navigate replace to="/login" />;
   }
@@ -68,10 +66,10 @@ function Home() {
   return (
     <div>
       <AuthProvider>
-        <Header handleLogout={handleLogout} />
+        <Header handleLogout={handleLogout} closets={closets} location={location} setLocation={setLocation}/>
         {/* <Clothet urls={urls} setUrls={setUrls} onLinkClick={handleLink} onDeleteClick={handleDelete}/> */}
-        <Gallery closet_id={closets[0].id} />
-        <ClotheAddModal closet_id={closets[0].id}/>
+        <Gallery closet_id={location} />
+        <ClotheAddModal closet_id={location}/>
       </AuthProvider>
     </div>
   );
