@@ -36,6 +36,7 @@ function Home() {
       const response =
         await ClosetsService.readClosetsApiV1ClosetsGetMyClosetsGet();
       setClosets(response);
+      console.log(response[0].id)
       setLocation(response[0].id);
 
     }

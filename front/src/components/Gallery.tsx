@@ -32,6 +32,7 @@ export function Gallery(props) {
   const handleAddClick = async (shop_url) => {
     const params = closet_id;
     const requestBody = { name: "string", shop_url: shop_url };
+    console.log(params, requestBody)
     await ClothesService.createClothesApiV1ClothesCreateClosetIdPost(
       params,
       requestBody
