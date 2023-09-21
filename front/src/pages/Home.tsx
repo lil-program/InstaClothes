@@ -8,7 +8,7 @@ import { Header } from "../layout/Header";
 import { Clothet } from "../layout/Clothet";
 import { ClotheAddModal } from "../components/ClotheAddModal";
 import { Gallery } from "../components/Gallery";
-
+import { Button } from "@mui/material";
 import { ClosetsService } from "../api_clients";
 
 
@@ -59,9 +59,13 @@ function Home() {
   // console.log(OpenAPI.TOKEN);
   if (!user) {
     return <Navigate replace to="/login" />;
-  }
+  };
   if (closets.length === 0) {
-    return <p>fafa</p>;
+    return (
+      <Button color="inherit" onClick={handleLogout}>
+              Logout
+      </Button>
+    );
   }
   return (
     <div>

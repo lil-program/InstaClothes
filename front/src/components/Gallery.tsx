@@ -14,12 +14,12 @@ export function Gallery(props) {
       console.log(closet_id);
       const response =
         await ClothesService.readClothesApiV1ClothesGetMyClothesClosetIdGet(
-          closet_id,
+          closet_id
         );
       setClothes([...response]);
     }
     fetchData();
-  }, []);
+  }, [closet_id]);
 
   const handleDelete = async (clothe_id) => {
     const requestBody = { clothes_ids: [clothe_id] };
@@ -32,9 +32,12 @@ export function Gallery(props) {
 
   const handleAddClick = async (shop_url) => {
     const params = closet_id;
-    console.log(params)
-    const requestBody = { name: "string", "shop_url": shop_url};
-    await ClothesService.createClothesApiV1ClothesCreateClosetIdPost(params, requestBody);
+    console.log(params);
+    const requestBody = { name: "string", shop_url: shop_url };
+    await ClothesService.createClothesApiV1ClothesCreateClosetIdPost(
+      params,
+      requestBody
+    );
   };
 
   return (
