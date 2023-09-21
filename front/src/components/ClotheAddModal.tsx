@@ -23,7 +23,6 @@ function ClotheAddModal(props) {
 
     const handleAddClothe = async (closet_id, shop_url) => {
 
-        console.log(shop_url)
         const requestBody = {"name": "string", "shop_url": shop_url};
         await ClothesService.createClothesApiV1ClothesCreateClosetIdPost(closet_id, requestBody);
 

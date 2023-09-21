@@ -14,9 +14,6 @@ function ButtonAppBar(props) {
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
 
-  const handleAddCloset = () => {
-    console.log("add closet");
-  };
   function Modal({ children }) {
     return (
       <div>

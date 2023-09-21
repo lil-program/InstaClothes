@@ -11,7 +11,6 @@ export function Gallery(props) {
   useEffect(() => {
     OpenAPI.BASE = import.meta.env.VITE_OPEN_API_BASE;
     async function fetchData() {
-      console.log(closet_id);
       const response =
         await ClothesService.readClothesApiV1ClothesGetMyClothesClosetIdGet(
           closet_id
@@ -25,14 +24,12 @@ export function Gallery(props) {
     const requestBody = { clothes_ids: [clothe_id] };
     await ClothesService.deleteClothesApiV1ClothesDeleteDelete(requestBody);
 
-    console.log("delete");
     const newClothes = clothes.filter((clothe) => clothe.id !== clothe_id);
     setClothes(newClothes);
   };
 
   const handleAddClick = async (shop_url) => {
     const params = closet_id;
-    console.log(params);
     const requestBody = { name: "string", shop_url: shop_url };
     await ClothesService.createClothesApiV1ClothesCreateClosetIdPost(
       params,

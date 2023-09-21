@@ -47,13 +47,11 @@ function Home() {
   const handleLogout = () => {
     auth.signOut();
     navigate("/login", { state: { id: 1 } });
-    console.log("logout");
   };
 
   const handleLogin = () => {
     navigate("/login", { state: { id: 1 } });
   };
-  console.log(location);
 
 
   // console.log(OpenAPI.TOKEN);
