@@ -31,7 +31,7 @@ function Home() {
   const [location, setLocation] = useState({} as any);
   const [closets, setClosets] = useState([] as any);
   useEffect(() => {
-    OpenAPI.BASE = "http://localhost:8003";
+    OpenAPI.BASE = import.meta.env.VITE_OPEN_API_BASE;
     async function fetchData() {
       const response =
         await ClosetsService.readClosetsApiV1ClosetsGetMyClosetsGet();

@@ -9,7 +9,7 @@ export function Gallery(props) {
   const [clothes, setClothes] = useState([] as any);
   // closetsをfetchしてcloset_idを取得する
   useEffect(() => {
-    OpenAPI.BASE = "http://localhost:8003";
+    OpenAPI.BASE = import.meta.env.VITE_OPEN_API_BASE;
     async function fetchData() {
       console.log(closet_id);
       const response =
