@@ -9,9 +9,9 @@
     - [backend](#backend)
       - [seed関数を実行する場合](#seed関数を実行する場合)
   - [実行方法](#実行方法)
-    - [pipenvを使用](#pipenvを使用)
     - [docker-composeを使用](#docker-composeを使用)
     - [tokenを取得する](#tokenを取得する)
+    - [テストの実行](#テストの実行)
   - [開発環境](#開発環境)
     - [使用技術](#使用技術)
     - [画像取得機能のサイトごとの対応](#画像取得機能のサイトごとの対応)
@@ -75,45 +75,6 @@ TESTER2_PASSWORD=                   # テスター2のパスワード
 
 
 ## 実行方法
-### pipenvを使用
-1. pipenvのインストール
-    ```bash
-    #windowsの場合
-    pip install pipenv
-    ```
-2. 必要なライブラリのインストール
-    ```bash
-    pipenv install
-    ```
-3. `.env`ファイルを作成
-4. `.env`ファイル内で各種設定を行う
-    ⇒ [.envファイルの設定事項](#envファイルの設定事項)へ
-5. 秘密鍵を発行したら、`backend`ディレクトリ直下の`app`ディレクトリの`core`ディレクトリに`lil_pro_account_key.json`という名前で保存する
-6. `backend`ディレクトリに移動
-    ```bash
-    cd backend
-    ```
-7. Dockerコンテナをビルドと起動
-    ```bash
-    docker compose up
-    ```
-8. alembicを使ってデータベースをマイグレーション
-    ```bash
-    pipenv run upgrade
-    ```
-9. seedデータをデータベースに追加([`seed関数を実行する場合`](#seed関数を実行する場合)の設定を参照してください。)
-    ```bash
-    pipenv run seed
-    ```
-10. backendサーバーを起動
-    ```bash
-    pipenv run start
-    ```
-11. backendサーバーが起動すると、以下のURLでAPIドキュメントにアクセスできます。
-    ```
-    http://localhost:8000/docs
-    ```
-
 ### docker-composeを使用
 1. `.env`ファイルを作成
 2. `.env`ファイル内で各種設定を行う
@@ -125,7 +86,7 @@ TESTER2_PASSWORD=                   # テスター2のパスワード
     ```
 5. Dockerコンテナをビルドと起動
     ```bash
-    docker compose up
+    docker-compose up
     ```
 
 ### tokenを取得する
@@ -138,6 +99,24 @@ TESTER2_PASSWORD=                   # テスター2のパスワード
     pipenv run generate_token
     ```
     [`seed関数を実行する場合`](#seed関数を実行する場合)の設定をしてください。
+
+### テストの実行
+1. `backend`ディレクトリに移動
+    ```bash
+    cd backend
+    ```
+2. Dockerコンテナをビルドと起動
+    ```bash
+    docker-compose up
+    ```
+3. Dockerコンテナの中に入る
+    ```bash
+    docker-compose exec backend bash
+    ```
+4. テストを実行
+    ```bash
+    pytest
+    ```
 
 ## 開発環境
 Windowsでしか動作確認していません。

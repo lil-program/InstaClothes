@@ -1,8 +1,8 @@
-from app import crud
-from app import schemas
-from app.api import deps
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+
+from app import crud, schemas
+from app.api import deps
 
 router = APIRouter()
 
@@ -60,13 +60,6 @@ async def update_clothes(
     if not existing_clothes:
         raise HTTPException(status_code=404, detail="Clothes not found.")
 
-    # closet_idとuidでclosetを検索し、存在しない場合はエラーを返す
-    existing_closet = crud.closet.get_by_id_and_user(
-        db, closet_id=existing_clothes.closet_id, user_id=cred.get("uid")
-    )
-    if not existing_closet:
-        raise HTTPException(status_code=404, detail="Closet not found.")
-
     # 更新処理
     clothes = crud.clothes.update(db, db_obj=existing_clothes, obj_in=clothes_in)
 
@@ -86,13 +79,6 @@ async def delete_clothes(
         existing_clothes = crud.clothes.get(db, id=clothes_id)
         if not existing_clothes:
             raise HTTPException(status_code=404, detail="Clothes not found.")
-
-        # closet_idとuidでclosetを検索し、存在しない場合はエラーを返す
-        existing_closet = crud.closet.get_by_id_and_user(
-            db, closet_id=existing_clothes.closet_id, user_id=cred.get("uid")
-        )
-        if not existing_closet:
-            raise HTTPException(status_code=404, detail="Closet not found.")
 
         removed_clothes.append(existing_clothes)
         crud.clothes.remove(db, id=clothes_id)

@@ -4,7 +4,7 @@ from app.functions.get_img.get_shop_list_img import get_shop_list_img
 from app.functions.get_img.get_shein_img import get_shein_img
 
 URL_TO_FUNCTION_MAPPING = {
-    'zozo.jp': get_zozo_img,
+    # 'zozo.jp': get_zozo_img,
     'shop-list.com': get_shop_list_img,
     'shein.com': get_shein_img
 }
